@@ -7,7 +7,7 @@ namespace kTools.Motion
     sealed class MotionBlurRenderPass : ScriptableRenderPass
     {
 #region Fields
-        const string kMotionBlurShader = "Hidden/kMotion/MotionBlur";
+        const string kMotionBlurShader = "Hidden/kMotion/MotionBlur1";
         const string kProfilingTag = "Motion Blur";
 
         static readonly string[] s_ShaderTags = new string[]

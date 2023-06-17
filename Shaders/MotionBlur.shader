@@ -1,4 +1,4 @@
-﻿Shader "Hidden/kMotion/MotionBlur"
+﻿Shader "Hidden/kMotion/MotionBlur1"
 {
     Properties
     {
