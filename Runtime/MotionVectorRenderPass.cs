@@ -76,7 +76,7 @@ namespace kTools.Motion
 
             // Profiling command
             CommandBuffer cmd = CommandBufferPool.Get(kProfilingTag);
-            using (new ProfilingSample(cmd, kProfilingTag))
+            using (new ProfilingScope(cmd, new ProfilingSampler(kProfilingTag)))
             {
                 ExecuteCommand(context, cmd);
 

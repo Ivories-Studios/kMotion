@@ -50,7 +50,7 @@ namespace kTools.Motion
 
             // Profiling command
             CommandBuffer cmd = CommandBufferPool.Get(kProfilingTag);
-            using (new ProfilingSample(cmd, kProfilingTag))
+            using (new ProfilingScope(cmd, new ProfilingSampler(kProfilingTag)))
             {
                 // Set Material properties from VolumeComponent
                 m_Material.SetFloat("_Intensity", m_MotionBlur.intensity.value);
