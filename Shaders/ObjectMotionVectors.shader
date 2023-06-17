@@ -25,18 +25,6 @@
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             // -------------------------------------
-            // Inputs
-            
-            CBUFFER_START(UnityPerMaterial)
-            float4x4 unity_MatrixPreviousM;
-
-            //X : Use last frame positions (right now skinned meshes are the only objects that use this
-            //Y : Force No Motion
-            //Z : Z bias value
-            float4 unity_MotionVectorsParams;
-            CBUFFER_END
-
-            // -------------------------------------
             // Structs
             struct Attributes
             {
