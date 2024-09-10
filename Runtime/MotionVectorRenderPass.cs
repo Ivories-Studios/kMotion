@@ -8,8 +8,8 @@ namespace kTools.Motion
     sealed class MotionVectorRenderPass : ScriptableRenderPass
     {
 #region Fields
-        const string kCameraShader = "Hidden/kMotion/CameraMotionVectors";
-        const string kObjectShader = "Hidden/kMotion/ObjectMotionVectors";
+        const string kCameraShader = "Hidden/kMotion/CameraMotionVectors1";
+        const string kObjectShader = "Hidden/kMotion/ObjectMotionVectors1";
         const string kPreviousViewProjectionMatrix = "_PrevViewProjMatrix";
         const string kMotionVectorTexture = "_MotionVectorTexture";
         const string kProfilingTag = "Motion Vectors";
@@ -76,7 +76,7 @@ namespace kTools.Motion
 
             // Profiling command
             CommandBuffer cmd = CommandBufferPool.Get(kProfilingTag);
-            using (new ProfilingSample(cmd, kProfilingTag))
+            using (new ProfilingScope(cmd, new ProfilingSampler(kProfilingTag)))
             {
                 ExecuteCommand(context, cmd);
 

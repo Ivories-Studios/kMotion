@@ -7,7 +7,7 @@ namespace kTools.Motion
     sealed class MotionBlurRenderPass : ScriptableRenderPass
     {
 #region Fields
-        const string kMotionBlurShader = "Hidden/kMotion/MotionBlur";
+        const string kMotionBlurShader = "Hidden/kMotion/MotionBlur1";
         const string kProfilingTag = "Motion Blur";
 
         static readonly string[] s_ShaderTags = new string[]
@@ -50,14 +50,13 @@ namespace kTools.Motion
 
             // Profiling command
             CommandBuffer cmd = CommandBufferPool.Get(kProfilingTag);
-            using (new ProfilingSample(cmd, kProfilingTag))
+            using (new ProfilingScope(cmd, new ProfilingSampler(kProfilingTag)))
             {
                 // Set Material properties from VolumeComponent
                 m_Material.SetFloat("_Intensity", m_MotionBlur.intensity.value);
                 m_Material.SetFloat("_Threshold", m_MotionBlur.threshold.value);
                 
-                // TODO: Why doesnt RenderTargetHandle.CameraTarget work?
-                var colorTextureIdentifier = new RenderTargetIdentifier("_CameraColorTexture");
+                var colorTextureIdentifier = renderingData.cameraData.renderer.cameraColorTarget;
 
                 // RenderTexture
                 var descriptor = new RenderTextureDescriptor(camera.scaledPixelWidth, camera.scaledPixelHeight, RenderTextureFormat.DefaultHDR, 16);
